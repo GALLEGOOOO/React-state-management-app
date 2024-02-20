@@ -76,53 +76,36 @@ const App = () => {
   return (
     <>
       <MainHeader text="React state management" />
-      <main className="main">
-        <section className="section">
-          <SectionHeader text="give feedback" />
-          <ButtonSet>
-            <Button
-              label="good"
-              handleUpdate={handleIncreaseGood}
-              level="success"
-            />
-            <Button
-              label="neutral"
-              handleUpdate={handleIncreaseNeutral}
-              level="secondary"
-            />
-            <Button
-              label="bad"
-              handleUpdate={handleIncreaseBad}
-              level="danger"
-            />
-          </ButtonSet>
-          <Statistics
-            statistics={statistics}
-            shouldRenderStatistics={shouldRenderStatistics({ totalFeedback })}
-          />
-        </section>
-        <section className="section">
-          <SectionHeader text="anecdotes" />
-          <AnecdoteCard title="Anecdote of the day">
-            <Anecdote content={anecdotes[selected]} votes={voted[selected]} />
-            <ButtonSet>
-              <Button
-                label="Vote"
-                handleUpdate={handleUpdateVotes}
-                level="success"
-              />
-              <Button
-                label="Next"
-                handleUpdate={handleRandomAnecdote}
-                level="secondary"
-              />
-            </ButtonSet>
-          </AnecdoteCard>
-          <AnecdoteCard title="Anecdote with most votes">
-            <Anecdote content={mostVotedAnecdote} votes={maxVoteValue} />
-          </AnecdoteCard>
-        </section>
-      </main>
+      <main className="main-container">
+  <section className="feedback-section">
+    <h2 className="section-header">Give Feedback</h2>
+    <div className="button-set">
+      <button className="custom-button good-button" onClick={handleIncreaseGood}>Good</button>
+      <button className="custom-button neutral-button" onClick={handleIncreaseNeutral}>Neutral</button>
+      <button className="custom-button bad-button" onClick={handleIncreaseBad}>Bad</button>
+    </div>
+    <Statistics
+      statistics={statistics}
+      shouldRenderStatistics={shouldRenderStatistics({ totalFeedback })}
+    />
+  </section>
+  <section className="anecdotes-section">
+    <h2 className="section-header">Anecdotes</h2>
+    <div className="anecdote-card">
+      <h3 className="anecdote-title">Anecdote of the day</h3>
+      <Anecdote content={anecdotes[selected]} votes={voted[selected]} />
+      <div className="button-set">
+        <button className="custom-button vote-button" onClick={handleUpdateVotes}>Vote</button>
+        <button className="custom-button next-button" onClick={handleRandomAnecdote}>Next</button>
+      </div>
+    </div>
+    <div className="anecdote-card">
+      <h3 className="anecdote-title">Anecdote with most votes</h3>
+      <Anecdote content={mostVotedAnecdote} votes={maxVoteValue} />
+    </div>
+  </section>
+</main>
+
     </>
   );
 };
