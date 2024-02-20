@@ -1,11 +1,11 @@
-import { StatisticLine } from "./StatisticLine"; // Importa el component 'StatisticLine' des d'un altre arxiu
-export const Statistics = ({ good, neutral, bad, total, result }) => {// Definició del component 'Statistics' que rep diverses propietats: good, neutral, bad, total i result
+import { StatisticLine } from "./StatisticLine";
+export const Statistics = ({ good, neutral, bad, total, result }) => {
   
-  if (total === 0) { // Comprovació si no s'ha donat cap feedback
-    return <p>no feedback given</p>; // Retorna un missatge indicant que no s'ha donat cap feedback
+  if (total === 0) {
+    return <p>no feedback given</p>;
   }
   
-  return ( // Si s'ha rebut feedback, mostra les estadístiques en una taula
+  return (
     <table>
       <tbody>
         <StatisticLine text="good" value={good} /> // Mostra el nombre de feedbacks positius
